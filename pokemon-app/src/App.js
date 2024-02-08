@@ -1,27 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import {Component} from 'react';
+import VerticalCarousel from './VerticalCarousel';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Pokemon from './Pokemon';
+import Home from './Home';
 
-function App() {
-  return (
-    <div className="App">
+export default class App extends Component {
 
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap" rel="stylesheet" />
-      </head>
-
-      <header className="App-header">
-        <img className="logo" src="pokemon_logo.png" alt="Pokemon Logo" />
-        <h1 className="title">Generation 1 Pokédex</h1>
-      </header>
-
-      <footer className="App-footer">
-
-      </footer>
-
-    </div>
-  );
+  render() {
+    return ( 
+      <>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/pokemon' element={<Pokemon />} />
+        </Routes>
+      </BrowserRouter>
+      </>
+    )
+  };
 }
 
-export default App;
+//export default App;
