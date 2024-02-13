@@ -1,0 +1,254 @@
+.item {
+    background-color: blue;
+    color: white;
+    max-width: 50vw;
+    min-height: 50px;
+    margin: -10px;
+    text-align: center;
+    z-index: 1;
+}
+
+.item-movedown, .item-moveup {
+    background-color: blue;
+    color: white;
+    max-width: 50vw;
+    min-height: 50px;
+    margin: -10px;
+    text-align: center;
+    z-index: 1;
+}
+
+/* ------------------- MOVE DOWN ANIMATIONS ------------------- */
+
+.item-movedown:nth-child(2) {
+    animation-name: move-first;
+    animation-duration: 0.2s;
+}
+
+.item-movedown:nth-child(3) {
+    animation-name: move-nth;
+    animation-duration: 0.2s;
+}
+
+.item-movedown:nth-child(4) {
+    animation-name: move-last;
+    animation-duration: 0.2s;
+}
+
+.item-movedown:last-child {
+    animation-name: move-hidden;
+    animation-duration: 0.2s;
+}
+
+
+@keyframes move-first {
+    from {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+}
+
+@keyframes move-nth {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-40px);
+        opacity: 0.5;
+    }
+}
+
+@keyframes move-last {
+    from {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateY(-40px);
+        opacity: 1;
+    }
+}
+
+@keyframes move-hidden {
+    from {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(-40px);
+        opacity: 0.5;
+    }
+}
+
+
+/* ------------------- MOVE UP ANIMATIONS ------------------- */
+
+.item-moveup:nth-child(2) {
+    animation-name: move-up-first;
+    animation-duration: 0.2s;
+}
+
+.item-moveup:nth-child(3) {
+    animation-name: move-up-nth;
+    animation-duration: 0.2s;
+}
+
+.item-moveup:nth-child(4) {
+    animation-name: move-up-last;
+    animation-duration: 0.2s;
+}
+
+.item-moveup:first-child {
+    animation-name: move-up-hidden;
+    animation-duration: 0.2s;
+}
+
+@keyframes move-up-first {
+    from {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateY(40px);
+        opacity: 1;
+    }
+}
+
+@keyframes move-up-nth {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(40px);
+        opacity: 0.5;
+    }
+}
+
+@keyframes move-up-last {
+    from {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+}
+
+@keyframes move-up-hidden {
+    from {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(40px);
+        opacity: 0.5;
+    }
+}
+
+
+.item:first-child, .item-movedown:first-child, .item-moveup:first-child {
+    opacity: 0;
+    z-index: 0;
+}
+
+.item:nth-child(2), .item-movedown:nth-child(2), .item-moveup:nth-child(2), .item:nth-child(4), .item-movedown:nth-child(4), .item-moveup:nth-child(4) {
+    opacity: 0.5;
+    z-index: 0;
+} 
+  
+.item:nth-child(3), .item-movedown:nth-child(3), .item-moveup:nth-child(3){
+    opacity: 1;
+    z-index: 0;
+}
+
+.item:last-child, .item-movedown:last-child, .item-moveup:last-child {
+    opacity: 0;
+}
+
+.itemTop {
+    background-color: red;
+    color: white;
+    min-width: 50vw;
+    text-align: center;
+}
+
+/* ------------------- Main Page ------------------- */
+
+body {
+    background-color: #EAD177;
+}
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  .App-header {
+    /* background-color: #51B166; */
+    background-image: linear-gradient(180deg, #51B166, #EAD177);
+    min-height: 15vh;
+    display: flex;
+  }
+  
+  .App-footer {
+    background-image: linear-gradient(180deg, #EAD177, #51B166);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 15vh;
+  }
+  
+  .title {
+    font-family: "Kadwa", serif;
+    font-weight: 700;
+    font-style: normal;
+    justify-content: center;
+    width: 75%;
+    margin-top: 0;
+    padding-top: 1%;
+  }
+  
+  .logo {
+    max-width: 150px;
+    max-height: 150px;
+    padding-top: 1%;
+    padding-left: 2%;
+    align-self: flex-start;
+  }
+  
+  @media (max-width: 520px) {
+    .title {
+      font-size: 1.7em;
+    }
+    .logo {
+      max-width: 125px;
+      max-height: 125px;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .title {
+      font-size: 1.25em;
+    }
+    .logo {
+      max-width: 100px;
+      max-height: 100px;
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .title {
+      font-size: 1em;
+    }
+    .logo {
+      max-width: 75px;
+      max-height: 75px;
+    }
+  }
