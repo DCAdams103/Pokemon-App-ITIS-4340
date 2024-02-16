@@ -1,9 +1,31 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import './Home.css';
 import {read, utils} from 'xlsx'
+import { TextField } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { pink } from '@mui/material/colors';
+import {Link} from 'react-router-dom';
+
+const theme = createTheme({ 
+  pallete: {
+    primary: {
+      main: pink[500]
+    }, 
+    secondary: {
+      main: pink[500]
+    } 
+  }
+});
 
 let slides = [
-  
+  {
+    key: -2,
+    content: ''
+  },
+  {
+    key: -1, 
+    content: ''
+  },
 ];
 
 let activeKey = 0;
@@ -15,15 +37,34 @@ let pokeNames = [];
 
 function Home() {
 
-  for(let i = 1; i <= 151; i++) {
-    slides.push({key:i, content: ''})
-  }
+  // for(let i = 1; i <= 151; i++) {
+  //   slides.push({key:i, content: ''})
+  // }
     
   const [activeItems, setActiveItems] = useState(slides.slice(activeKey, activeKey + 5));
   const [moveDown, setMoveDown] = useState(false);
   const [moveUp, setMoveUp] = useState(false);
   const [sprites, setSprites] = useState([...slides])
   const [names, setNames] = useState([...pokeNames])
+  const [query, setQuery] = useState('')
+
+  useEffect(() => {
+    (async () => {
+      await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+      .then(response=>response.json())
+      .then(data => {
+
+        for(let k in data.results) {
+          pokeNames.push(data.results[k].name)
+          slides.push({key:parseInt(k)+1, content: data.results[k].name})
+        }
+
+        setNames([...pokeNames])
+        setActiveItems(slides.slice(activeKey, activeKey + 5));
+      })
+  
+    })()
+  }, [])
 
   const downAction = () => {
     if (activeKey < slides.length-3) {
@@ -45,22 +86,7 @@ function Home() {
   }
 
   useEffect(() => {
-    (async () => {
-      await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
-      .then(response=>response.json())
-      .then(data => {
-        for(let k in data.results) {
-          pokeNames.push(data.results[k].name)
-        }
-        setNames([...pokeNames])
-      })
-  
-    })()
-  })
-
-  useEffect(() => {
     if (!moveUp && up) {
-      console.log('up');
       if (activeKey > 0) {
         activeKey--;
         setActiveItems(slides.slice(activeKey, activeKey + 5));
@@ -74,6 +100,62 @@ function Home() {
       down = false;
     } 
   }, [moveUp, moveDown])
+
+  const changeHandler = (e) => {
+    setQuery(e.target.value)
+  }
+
+  const filteredPokemon = slides.filter(name => {
+    return name.content.includes(query)
+  })
+
+  useEffect(() => {
+    activeKey = 0;
+    if (query) {
+      const newContent = [
+        {key: -2, content: ''},
+        {key: -1, content: ''},
+        ...filteredPokemon,
+        {key: -3, content: ''},
+      ]
+      setActiveItems(newContent.slice(activeKey, activeKey + 5));
+      slides = newContent;
+      console.log(slides);
+    } else {
+      slides = [
+        {
+          key: -2,
+          content: ''
+        },
+        {
+          key: -1, 
+          content: ''
+        },
+      ];
+
+      for (let i = 1; i <= pokeNames.length; i++) {
+        slides.push({key:i, content: pokeNames[i-1]})
+      }
+      setActiveItems(slides.slice(activeKey, activeKey + 5));
+    }
+  }, [query])
+
+  const handleKeyDown = useCallback((event) => {  
+    if (event.key === 'ArrowUp') {
+      upAction();
+    } else if (event.key === 'ArrowDown') {
+      downAction();
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+
+  }, [handleKeyDown])
 
   return (
     <>
@@ -90,21 +172,27 @@ function Home() {
         </header>
 
         {sprites && names ? 
-        <div className="carousel">
-          <ul>
-            {activeItems.map(item => 
-              <li className={moveDown ? "item-movedown" : moveUp ? "item-moveup" : "item"} key={item.key} onAnimationEnd={() => onEnd()}>
-                <div>
-                  <img className="sprite" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item.key}.png`} alt={item.content} width='75' height='75' />
-                  <h3 className='pokemon-name'>{pokeNames[item.key-1]}</h3>
-                </div>
-              </li>
-            )}
-          </ul>
-            
-            <button onClick={() => {upAction()}}>Up</button>
-            <button onClick={() => {downAction()}}>Down</button>
-        </div>
+        <>
+          <div className="carousel">
+            <ul>
+              {activeItems.map(item => 
+                <li className={moveDown ? "item-movedown" : moveUp ? "item-moveup" : "item"} style={item.content == '' ? {opacity: 0} : {}} key={item.key} onAnimationEnd={() => onEnd()}>
+                  <div>
+                    <img className="sprite" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item.key}.png`} alt={item.content} width='75' height='75' />
+                    <Link className="pokemon-name" to={`Pokemon/${item.key}`}>{pokeNames[item.key-1]}</Link>
+                    {/* <h3 className='pokemon-name'>{pokeNames[item.key-1]}</h3> */}
+                  </div>
+                </li>
+              )}
+            </ul>
+
+          </div>
+
+          <button className="nav-button" onClick={() => {upAction()}}><img src='up-arrow.png' alt='up arrow' width='50' height='50' /></button>
+          <button className="nav-button" onClick={() => {downAction()}}><img src='down-arrow.png' alt='up arrow' width='50' height='50' /></button>
+          <br/>
+          <TextField id="filled-basic" label="Search" variant="filled"  onChange={changeHandler} sx={{input: { background: "#ffb1b1", color: "white", }}} />
+          </>
         :
         <div>
           Loading...

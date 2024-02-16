@@ -37,6 +37,12 @@
   align-self: flex-start;
 }
 
+.nav-button {
+  border: none;
+  appearance: none;
+  background-color: inherit;
+}
+
 @media (max-width: 520px) {
   .title {
     font-size: 1.7em;

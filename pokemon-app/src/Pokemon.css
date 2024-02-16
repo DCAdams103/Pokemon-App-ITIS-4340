@@ -5,7 +5,7 @@
 
 .app-contanier{
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .pokemon-header{
@@ -155,4 +155,21 @@
     width: 0;
     height: 7px;
     background: #0000FF;
+}
+
+.types {
+    display: inline;
+    margin-top: -40px;
+}
+
+.types p {
+    display: inline;
+    margin-left: 2vw;
+}
+
+.type-grass {
+    background-color: #51B166;
+    border-radius: 10px;
+    margin: 1%;
+    font-size: .2em;
 }

@@ -13,6 +13,7 @@ export default class App extends Component {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/pokemon' element={<Pokemon />} />
+          <Route path='/pokemon/:id' element={<Pokemon />} />
         </Routes>
       </BrowserRouter>
       </>
