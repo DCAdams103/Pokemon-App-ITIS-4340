@@ -82,9 +82,17 @@ const Pokemon = () => {
         </header>
         <div>
             <div className="app-container h-screen">
+
+            <Link to="/home" className="back-button">
+                <div>
+                    <img src="./backButton.JPG" alt="Back" className="back-icon" />
+                </div>
+            </Link>  
                 
 
                 <div className="main">
+
+
                     <div className="pokemon-main">
                         <img src="https://sg.portal-pokemon.com/play/resources/pokedex/img/pm/3bfcc4360c44f37815dc1e59f75818935cbfc41b.png" alt="Pokemon Img" />
                         <h2>Venusaur</h2>
