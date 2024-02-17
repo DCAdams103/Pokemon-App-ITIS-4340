@@ -180,9 +180,17 @@ const Pokemon = () => {
         </header>
         <div>
             <div className="app-container h-screen">
+
+            <Link to="/home" className="back-button">
+                <div>
+                    <img src="./backButton.JPG" alt="Back" className="back-icon" />
+                </div>
+            </Link>  
                 
 
                 <div className="main">
+
+
                     <div className="pokemon-main">
                         <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} alt="Pokemon Img" />
                         <h2 className='pokemon-name'>{name}</h2>
