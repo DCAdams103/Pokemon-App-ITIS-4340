@@ -3,7 +3,7 @@ import axios from "axios";
 import { OpenAI } from 'openai';
 import './App.css';
 import './Pokemon.css';
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, Link } from "react-router-dom";
 
 const returnType = (type) => {
 
@@ -181,11 +181,11 @@ const Pokemon = () => {
         <div>
             <div className="app-container h-screen">
 
-            <Link to="/home" className="back-button">
+            {/* <Link to="/home" className="back-button">
                 <div>
-                    <img src="./backButton.JPG" alt="Back" className="back-icon" />
+                    <img src="/backButton.JPG" alt="Back" className="back-icon" />
                 </div>
-            </Link>  
+            </Link>   */}
                 
 
                 <div className="main">

@@ -42,6 +42,10 @@ ul {
     text-decoration: none;
     font-size: 40px;
     min-width: 20vw;
+    font-family: "Kadwa", serif;
+}
+a {
+    text-decoration: none;
 }
 
 .pokemon-container {
