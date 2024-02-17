@@ -1,3 +1,6 @@
+/* body {
+    height: 150vh;
+} */
 ul { 
     list-style: none;
     min-width: 50vw;
@@ -241,7 +244,7 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
-    min-height: 15vh;
+    min-height: 10vh;
   }
   
   .title {

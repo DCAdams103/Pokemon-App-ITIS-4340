@@ -93,6 +93,7 @@ const Pokemon = () => {
     const [types, setTypes] = useState([]);
     const [name, setName] = useState('')
     const [weakAgainst, setWeakAgainst] = useState([]);
+    const [stats, setStats] = useState([]);
     let { id } = useParams();
     
     // useEffect(() => {
@@ -136,9 +137,16 @@ const Pokemon = () => {
             for (let i = 0; i < data.types.length; i++) {
                 types.push(data.types[i].type.name)
             }
-            setTypes([...types]);
 
+            setTypes([...types]);
             setName(data.name);
+
+            let stats = [];
+            for (let i = 0; i < data.stats.length; i++) {
+                stats.push({name: data.stats[i].stat.name, stat: data.stats[i].base_stat})
+            }
+            console.log(stats)
+            setStats([...stats])
 
           })
         })()
@@ -155,7 +163,6 @@ const Pokemon = () => {
                   for (let i = 0; i < data.damage_relations.double_damage_from.length; i++) {
                     weakAgainstTemp.push(data.damage_relations.double_damage_from[i].name);
                   }
-
                   console.log(weakAgainstTemp)
                   setWeakAgainst([...weakAgainstTemp]);
 
@@ -205,31 +212,18 @@ const Pokemon = () => {
 
                             <div className="stats-column">
                                 <h3>Stats</h3>
-
+                                
                                 <div>
-                                    <div className="stat-1">
-                                        <p>HP</p>
+                                    {stats.map((stat, index) =>
+                                        <div className="stat-1">
+                                            <p>{stat.name}</p>
 
-                                        <div className="bar">
-                                            <div className="inner-bar"></div>
+                                            <div className={"bar-" + stat.name}>
+                                                <div className={"inner-bar-" + stat.name} style={{width: `${stat.stat}%`}}></div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
 
-                                    <div className="stat-1">
-                                        <p>HP</p>
-
-                                        <div className="bar">
-                                            <div className="inner-bar"></div>
-                                        </div>
-                                    </div>
-
-                                    <div className="stat-1">
-                                        <p>HP</p>
-
-                                        <div className="bar">
-                                            <div className="inner-bar"></div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

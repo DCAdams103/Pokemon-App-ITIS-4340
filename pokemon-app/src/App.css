@@ -9,15 +9,6 @@
   display: flex;
 }
 
-.App-footer {
-  background-image: linear-gradient(180deg, #EAD177, #51B166);
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  min-height: 15vh;
-}
-
 .title {
   font-family: "Kadwa", serif;
   font-weight: 700;
