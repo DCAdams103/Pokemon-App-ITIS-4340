@@ -17,6 +17,10 @@
   padding-top: 1rem;
 }
 
+.pokemon-name {
+    text-transform: capitalize;
+}
+
 .pokemon-header img{
     position: absolute;
     top: 1.2rem;
@@ -51,6 +55,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 }
 
 .pokemon-main img{
@@ -63,13 +68,15 @@
     margin-top: -4rem;
     font-size: 4rem;
     font-weight: 600;
+    font-family: "Kadwa", serif;
 }
 
 .pokemon-main p{
-    margin-top: -1.5rem;
+    margin-top: 0;
     color: #78716C;
     font-size: 2rem;
     font-weight: 600;
+    font-family: "Kadwa", serif;
 }
 
 .pokemon-info{
@@ -78,6 +85,7 @@
     padding-right: 10rem;
     padding-left: 10rem;
     padding-top: 1rem;
+    
 }
 
 .pokemon-info p{
@@ -85,6 +93,7 @@
     line-height: 3rem;
     font-weight: 600;
     text-align: center;
+    font-family: "Kadwa", serif;
 }
 
 .stats{
@@ -100,6 +109,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: "Kadwa", serif;
 }
 
 .weak-against div{
@@ -121,6 +131,7 @@
     font-size: 2rem;
     font-weight: 700;
     text-decoration: underline;
+    font-family: "Kadwa", serif;
 }
 
 .stats-column{
@@ -157,19 +168,75 @@
     background: #0000FF;
 }
 
+h2 {
+    margin-bottom: 0;
+}
+
 .types {
     display: inline;
-    margin-top: -40px;
+    margin-top: -20px;
 }
 
 .types p {
     display: inline;
-    margin-left: 2vw;
+    font-size: 1.75em;
+    color: black;
+    padding: 3%;
 }
 
+/* ----------------- TYPE BLOCKS --------------- */
 .type-grass {
-    background-color: #51B166;
+    background-color: #8CDB67;
     border-radius: 10px;
     margin: 1%;
-    font-size: .2em;
+    font-size: 2px;
+}
+
+.type-poison {
+    background-color: #A57AFF;
+    border-radius: 10px;
+    margin: 1%;
+    font-size: 2px;
+}
+
+.type-fire {
+    background-color: red;
+    border-radius: 10px;
+    margin: 1%;
+    font-size: 2px;
+}
+
+.type-flying {
+    background-image: linear-gradient(180deg, #637afe, #A5B2FF);
+    border-radius: 10px;
+    margin: 1%;
+    font-size: 2px;
+}
+
+.type-water {
+    background-color: #A5B2FF;
+    border-radius: 10px;
+    margin: 1%;
+    font-size: 2px;
+}
+.type-bug {
+    background-color: #A5B21A;
+    border-radius: 10px;
+    margin: 1%;
+    font-size: 2px;
+}
+
+.type-normal {
+    background-color: lightgray;
+    border-radius: 10px;
+    margin: 1%;
+    font-size: 2px;
+}
+
+.type-electric {
+    background-color: #FFD700;
+    border-radius: 10px;
+    margin: 1%;
+    font-size: 2px;
+    border: 1px solid black;    
 }

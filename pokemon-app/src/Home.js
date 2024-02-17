@@ -177,11 +177,12 @@ function Home() {
             <ul>
               {activeItems.map(item => 
                 <li className={moveDown ? "item-movedown" : moveUp ? "item-moveup" : "item"} style={item.content == '' ? {opacity: 0} : {}} key={item.key} onAnimationEnd={() => onEnd()}>
-                  <div>
+                  <div className='pokemon-container'>
                     <img className="sprite" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item.key}.png`} alt={item.content} width='75' height='75' />
-                    <Link className="pokemon-name" to={`Pokemon/${item.key}`}>{pokeNames[item.key-1]}</Link>
+                    
                     {/* <h3 className='pokemon-name'>{pokeNames[item.key-1]}</h3> */}
                   </div>
+                  <Link className="pokemon-name" to={`Pokemon/${item.key}`} state={{id: item.key}}>{pokeNames[item.key-1]}</Link>
                 </li>
               )}
             </ul>

@@ -31,15 +31,20 @@ ul {
 }
 
 .sprite {
-    margin-left:-42vw;
+    margin-left: -350px;
 }
+
 
 .pokemon-name {
-    padding: none;
-    margin: none;
-    margin-top: -40px;
+    text-decoration: none;
+    font-size: 40px;
+    min-width: 20vw;
 }
 
+.pokemon-container {
+    text-align: center;
+    display: inline-block;
+}
 /* ------------------- MOVE DOWN ANIMATIONS ------------------- */
 
 .item-movedown:nth-child(2) {
