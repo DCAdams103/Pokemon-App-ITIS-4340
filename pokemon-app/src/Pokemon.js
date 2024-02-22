@@ -181,15 +181,14 @@ const Pokemon = () => {
         <div>
             <div className="app-container h-screen">
 
-            {/* <Link to="/home" className="back-button">
+            <Link to="/" className="back-button">
                 <div>
-                    <img src="/backButton.JPG" alt="Back" className="back-icon" />
+                    <img src="/backButton.png" alt="Back" className="back-icon" />
                 </div>
-            </Link>   */}
+            </Link>  
                 
 
                 <div className="main">
-
 
                     <div className="pokemon-main">
                         <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} alt="Pokemon Img" />

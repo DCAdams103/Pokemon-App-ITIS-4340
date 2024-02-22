@@ -81,8 +81,17 @@ function Home() {
   }
 
   const onEnd = () => {
-    setMoveUp(false);
-    setMoveDown(false);
+    (async () => {
+      await timeout(95);
+      setMoveUp(false); 
+      setMoveDown(false);
+    })()
+    // setMoveUp(false);
+    // setMoveDown(false);
+  }
+
+  function timeout(delay) {
+      return new Promise( res => setTimeout(res, delay) );
   }
 
   useEffect(() => {
@@ -90,12 +99,14 @@ function Home() {
       if (activeKey > 0) {
         activeKey--;
         setActiveItems(slides.slice(activeKey, activeKey + 5));
+
       }
       up = false;
     } else if (!moveDown && down){
       if (activeKey < slides.length-3) {
         activeKey++;
         setActiveItems(slides.slice(activeKey, activeKey + 5));
+        
       }
       down = false;
     } 
@@ -176,7 +187,7 @@ function Home() {
           <div className="carousel">
             <ul>
               {activeItems.map(item => 
-                <li className={moveDown ? "item-movedown" : moveUp ? "item-moveup" : "item"} style={item.content == '' ? {opacity: 0} : {}} key={item.key} onAnimationEnd={() => onEnd()}>
+                <li className={moveDown ? "item-movedown" : moveUp ? "item-moveup" : "item"} style={item.content == '' ? {opacity: 0} : {}} key={item.key} onAnimationStart={() => onEnd()}>
                   <div className='pokemon-container'>
                     <img className="sprite" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item.key}.png`} alt={item.content} width='75' height='75' />
                     

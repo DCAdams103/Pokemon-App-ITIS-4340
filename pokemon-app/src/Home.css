@@ -56,22 +56,22 @@ a {
 
 .item-movedown:nth-child(2) {
     animation-name: move-first;
-    animation-duration: .2s;
+    animation-duration: .4s;
 }
 
 .item-movedown:nth-child(3) {
     animation-name: move-nth;
-    animation-duration: .2s;
+    animation-duration: .4s;
 }
 
 .item-movedown:nth-child(4) {
     animation-name: move-last;
-    animation-duration: .2s;
+    animation-duration: .4s;
 }
 
 .item-movedown:last-child {
     animation-name: move-hidden;
-    animation-duration: .2s;
+    animation-duration: .4s;
 }
 
 
@@ -248,7 +248,7 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
-    min-height: 10vh;
+    min-height: 6vh;
   }
   
   .title {
